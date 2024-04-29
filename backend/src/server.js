@@ -1,8 +1,7 @@
 //express-async-errors : package used to handle errors that occur within asynchronous route handlers or middleware functions.
 require("express-async-errors");
-require("dotenv").config({ path: "../.env" });
+require("dotenv").config();
 const express = require("express");
-
 const cron = require("node-cron");
 const cors = require("cors");
 const connectDB = require("../config/database/connect_database");
@@ -63,10 +62,9 @@ const start = async () => {
   await connectDB();
   httpServer.listen(port, console.log(`Server is listening on port ${port}`));
   console.log("Before scheduling cron job");
-  getReservationsOfToday();
-  /* cron.schedule("0 0 * * *", async () => {
-                                                                                         
-                                                                                        }); */
+  cron.schedule("0 0 * * *", async () => {
+    getReservationsOfToday();
+  });
   console.log("After scheduling cron job");
 };
 start();
