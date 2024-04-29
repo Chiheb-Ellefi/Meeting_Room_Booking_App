@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./
+    container_name: Meeting_Room_Booking_API
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    network_mode: host
+    environment:
+      POSTGRES_USER: chiheb
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: test
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: chiheb
+      POSTGRES_PASSWORD: 123456789
+      POSTGRES_DB: test
+    network_mode: host
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    network_mode: host

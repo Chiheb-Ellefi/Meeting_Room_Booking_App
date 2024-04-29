@@ -1,0 +1,105 @@
+{
+    "data": [{
+            "id": 1,
+            "details": {
+                "name": "carthage",
+                "chairs": 4,
+                "tables": 2,
+                "site": "zenith1"
+            },
+            "booked": false
+        },
+        {
+            "id": 2,
+            "details": {
+                "name": "olympia",
+                "chairs": 6,
+                "tables": 3,
+                "site": "zenith2"
+            },
+            "booked": true
+        },
+        {
+            "id": 3,
+            "details": {
+                "name": "alexandria",
+                "chairs": 8,
+                "tables": 4,
+                "site": "zenith3"
+            },
+            "booked": false
+        },
+        {
+            "id": 4,
+            "details": {
+                "name": "sparta",
+                "chairs": 10,
+                "tables": 5,
+                "site": "zenith4"
+            },
+            "booked": true
+        },
+        {
+            "id": 5,
+            "details": {
+                "name": "athens",
+                "chairs": 12,
+                "tables": 6,
+                "site": "zenith5"
+            },
+            "booked": false
+        },
+        {
+            "id": 6,
+            "details": {
+                "name": "crete",
+                "chairs": 14,
+                "tables": 7,
+                "site": "zenith6"
+            },
+            "booked": true
+        },
+        {
+            "id": 7,
+            "details": {
+                "name": "delphi",
+                "chairs": 16,
+                "tables": 8,
+                "site": "zenith7"
+            },
+            "booked": false
+        },
+        {
+            "id": 8,
+            "details": {
+                "name": "mykonos",
+                "chairs": 18,
+                "tables": 9,
+                "site": "zenith8"
+            },
+            "booked": true
+        },
+        {
+            "id": 9,
+            "details": {
+                "name": "rhodes",
+                "chairs": 20,
+                "tables": 10,
+                "site": "zenith9"
+            },
+            "booked": false
+        },
+        {
+            "id": 10,
+            "details": {
+                "name": "corinth",
+                "chairs": 22,
+                "tables": 11,
+                "site": "zenith10"
+            },
+            "booked": true
+        }
+    ],
+    "count": 10
+
+}
