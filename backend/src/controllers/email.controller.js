@@ -14,12 +14,12 @@ const transporter = nodemailer.createTransport({
 
 const sendEmail = async (req, res) => {
   const { code, email, type, subject, html } = req.body;
-  /* if (type != "support") {
-            const user = await findUser({ email });
-            if (!user) {
-              throw new NotFound(`No user found with email : ${email}.`);
-            }
-          } */
+  if (type != "support") {
+    const user = await findUser({ email });
+    if (!user) {
+      throw new NotFound(`No user found with email : ${email}.`);
+    }
+  }
   let info = await transporter.sendMail({
     from: '"Meeting Room Booking App" <booking.app@ooredoo.tn>',
     to: email,
