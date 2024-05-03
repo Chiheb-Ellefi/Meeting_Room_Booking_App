@@ -15,7 +15,7 @@ const errorHandler = require("./middlewares/error_handler");
 const notFoundMiddleware = require("./middlewares/not_found");
 const getReservationsOfToday = require("./custom_modules/reservation/scheduler");
 const {
-    checkForReservations,
+  checkForReservations,
 } = require("./custom_modules/reservation/current_reservation_checker");
 
 const { Server } = require("socket.io");
@@ -33,38 +33,38 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api/v2/auth", authRouter);
 app.use(
-    "/api/v2",
-    userRouter,
-    roomRouter,
-    reservationRouter,
-    reportRouter,
-    dashboardRouter
+  "/api/v2",
+  userRouter,
+  roomRouter,
+  reservationRouter,
+  reportRouter,
+  dashboardRouter
 );
 app.use(errorHandler);
 app.use(notFoundMiddleware);
 
 io.on("connection", (socket) => {
-    console.log(socket.id);
-    socket.on("updated", (arg1) => {
-        console.log(arg1);
-    });
-    roomStatusUpdate = ({ roomId, booked, res_id }) => {
-        console.log(roomId, { booked });
-        io.emit("updateRoom", roomId, { booked, res_id });
-    };
-    setInterval(async() => {
-        checkForReservations(roomStatusUpdate);
-        console.log("executed once");
-    }, 10000);
+  console.log(socket.id);
+  socket.on("updated", (arg1) => {
+    console.log(arg1);
+  });
+  roomStatusUpdate = ({ roomId, booked, res_id }) => {
+    console.log(roomId, { booked });
+    io.emit("updateRoom", roomId, { booked, res_id });
+  };
+  setInterval(async () => {
+    checkForReservations(roomStatusUpdate);
+    console.log("executed once");
+  }, 10000);
 });
 
-const start = async() => {
-    await connectDB();
-    httpServer.listen(port, console.log(`Server is listening on port ${port}`));
-    console.log("Before scheduling cron job");
-    cron.schedule("0 0 * * *", async() => {
-        getReservationsOfToday();
-    });
-    console.log("After scheduling cron job");
+const start = async () => {
+  await connectDB();
+  httpServer.listen(port, console.log(`Server is listening on port ${port}`));
+  console.log("Before scheduling cron job");
+  cron.schedule("0 0 * * *", async () => {
+    getReservationsOfToday();
+  });
+  console.log("After scheduling cron job");
 };
 start();

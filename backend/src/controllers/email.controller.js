@@ -13,16 +13,21 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = async (req, res) => {
-  const { code, email } = req.body;
-  const user = await findUser({ email });
-  if (!user) {
-    throw new NotFound(`No user found with email : ${email}.`);
-  }
+  const { code, email, type, subject, html } = req.body;
+  /* if (type != "support") {
+            const user = await findUser({ email });
+            if (!user) {
+              throw new NotFound(`No user found with email : ${email}.`);
+            }
+          } */
   let info = await transporter.sendMail({
     from: '"Meeting Room Booking App" <booking.app@ooredoo.tn>',
     to: email,
-    subject: "Verification Code ",
-    html: `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
+    subject: type == "support" ? subject : "Verification Code ",
+    html:
+      type == "support"
+        ? html
+        : `<div style="font-family: Helvetica,Arial,sans-serif;min-width:1000px;overflow:auto;line-height:2">
   <div style="margin:50px auto;width:70%;padding:20px 0">
     <div style="border-bottom:1px solid #eee">
       <a href="" style="font-size:1.4em;color: #00466a;text-decoration:none;font-weight:600">Ooredoo Meeting Room Booking App</a>

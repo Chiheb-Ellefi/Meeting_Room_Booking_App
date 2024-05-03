@@ -4,6 +4,7 @@ const {
   getAll,
   deleteOne,
   getCount,
+  updateOne,
 } = require("../services/report.service");
 
 const { StatusCodes } = require("http-status-codes");
@@ -57,4 +58,13 @@ const deleteReport = async (req, res) => {
     .status(StatusCodes.OK)
     .json({ message: "Report was deleted successfully" });
 };
-module.exports = { addReport, getAllReports, deleteReport };
+const updateReport = async (req, res) => {
+  const { rep_id } = req.params;
+  const { done } = req.body;
+  const where = { rep_id };
+  await updateOne({ done }, where);
+  res
+    .status(StatusCodes.OK)
+    .json({ message: "Report was updated successfully" });
+};
+module.exports = { addReport, getAllReports, deleteReport, updateReport };

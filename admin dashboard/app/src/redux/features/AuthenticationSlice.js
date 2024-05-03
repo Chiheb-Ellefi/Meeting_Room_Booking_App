@@ -26,7 +26,6 @@ export const logoutUser = createAsyncThunk("auth/logoutUser", async () => {
 export const sendEmail = createAsyncThunk("auth/sendEmail", async (details) => {
   const request = await axios.post(`/domain/api/v2/auth/email`, details);
   const response = request.data;
-  console.log("details", response);
   return response;
 });
 

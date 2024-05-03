@@ -21,11 +21,20 @@ const ReportsListItem = ({ item, index, onClick, onConfirmationClick }) => {
           <X />
         </div>
         <div
-          className="rounded-full w-[80px] h-[80px]  hover:cursor-pointer bg-none bg-cover"
-          style={{
-            backgroundImage: `url(${`${item.user.image || userAvatar}`})`,
-          }}
-        ></div>
+          className={`rounded-full p-1 ${
+            item.report.done
+              ? "bg-gradient-to-r from-green-400 via-green-500 to-green-400 "
+              : "bg-gradient-to-r from-red-400 via-red-500 to-red-400 "
+          } `}
+        >
+          <div
+            className="rounded-full w-[80px] h-[80px]  hover:cursor-pointer bg-none bg-cover"
+            style={{
+              backgroundImage: `url(${`${item.user.image || userAvatar}`})`,
+            }}
+          ></div>
+        </div>
+
         <div className=" flex flex-col items-start w-full h-2/3 p-2 ">
           <h1 className="text-lg font-bold text-black/70">
             {item.user.username}

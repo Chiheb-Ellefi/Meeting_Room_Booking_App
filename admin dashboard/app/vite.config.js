@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5000,
     proxy: {
       "/domain": {
-        target: "http://192.168.43.197:3000",
+        target: "http://192.168.1.17:3000",
         changeOrigin: true,
         secure: false,
         ws: true,

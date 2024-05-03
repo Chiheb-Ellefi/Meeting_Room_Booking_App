@@ -2,6 +2,7 @@ const {
   addReport,
   getAllReports,
   deleteReport,
+  updateReport,
 } = require("../controllers/report.controller");
 const authenticationMiddleware = require("../middlewares/authentication");
 const checkForAdminMiddleware = require("../middlewares/admin_middleware");
@@ -14,5 +15,7 @@ router
 router
   .route("/reports")
   .get(authenticationMiddleware, checkForAdminMiddleware, getAllReports);
-
+router
+  .route("/report/:rep_id")
+  .patch(authenticationMiddleware, checkForAdminMiddleware, updateReport);
 module.exports = router;

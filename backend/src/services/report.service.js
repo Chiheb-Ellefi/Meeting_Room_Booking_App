@@ -17,5 +17,8 @@ const deleteOne = async ({ rep_id }) => {
 const getCount = async () => {
   return await Report.count();
 };
+const updateOne = async (details, where) => {
+  return await Report.update(details, { where });
+};
 
-module.exports = { addOne, getAll, deleteOne, getCount };
+module.exports = { addOne, getAll, deleteOne, getCount, updateOne };
