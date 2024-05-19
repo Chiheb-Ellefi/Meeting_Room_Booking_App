@@ -37,6 +37,10 @@ User.init(
       allowNull: false,
       defaultValue: true,
     },
+    details: {
+      type: [DataTypes.JSON],
+      defaultValue: [],
+    },
   },
   {
     sequelize,
