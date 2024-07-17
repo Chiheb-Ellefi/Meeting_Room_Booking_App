@@ -1,6 +1,6 @@
 FROM node:18-alpine
 
-#RUN npm i -g nodemon 
+RUN npm i -g nodemon 
 
 WORKDIR /app
 
@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["npm","run","build"]
+CMD ["npm","run","start"]

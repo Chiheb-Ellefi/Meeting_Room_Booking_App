@@ -62,9 +62,10 @@ const start = async () => {
   await connectDB();
   httpServer.listen(port, console.log(`Server is listening on port ${port}`));
   console.log("Before scheduling cron job");
-  cron.schedule("0 0 * * *", async () => {
-    getReservationsOfToday();
-  });
+  /* cron.schedule("0 0 * * *", async () => {
+            
+          }); */
+  getReservationsOfToday();
   console.log("After scheduling cron job");
 };
 start();
